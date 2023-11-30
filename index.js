@@ -50,6 +50,15 @@ class Tts extends NativeEventEmitter {
     return TextToSpeech.setDefaultRate(rate, !!skipTransform);
   }
 
+  setDefaultVolume(volume) {
+    if (Platform.OS === 'ios') {
+      return TextToSpeech.setDefaultVolume(volume);
+    }
+    else {
+      return Promise.resolve()
+    }
+  }
+
   setDefaultPitch(pitch) {
     return TextToSpeech.setDefaultPitch(pitch);
   }

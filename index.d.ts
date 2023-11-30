@@ -37,7 +37,8 @@ export type TtsError = {
     | "Android AudioManager error"
     | "not_available"
     | "not_found"
-    | "bad_rate";
+    | "bad_rate"
+    | "bad_volume";
   message: string;
 };
 
@@ -82,6 +83,7 @@ export type Options =
   | {
       iosVoiceId: string;
       rate: number;
+      volume: number;
       androidParams: AndroidOptions;
     };
 
@@ -92,6 +94,7 @@ export class ReactNativeTts extends RN.NativeEventEmitter {
   setDucking: (enabled: boolean) => Promise<"success">;
   setDefaultEngine: (engineName: string) => Promise<boolean>;
   setDefaultVoice: (voiceId: string) => Promise<"success">;
+  setDefaultVolume: (volume: number)=>Promise<"success">;
   setDefaultRate: (rate: number, skipTransform?: boolean) => Promise<"success">;
   setDefaultPitch: (pitch: number) => Promise<"success">;
   setDefaultLanguage: (language: string) => Promise<"success">;
